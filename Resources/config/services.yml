@@ -1,0 +1,7 @@
+parameters:
+#    sescandell_simple_newsletter.example.class: Sescandell\SimpleNewsletterBundle\Example
+
+services:
+#    sescandell_simple_newsletter.example:
+#        class: %sescandell_simple_newsletter.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
