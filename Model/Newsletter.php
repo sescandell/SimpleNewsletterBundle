@@ -54,7 +54,7 @@ class Newsletter implements NewsletterInterface
     /**
      * Set subject to $subject
      *
-     * @param string $subject
+     * @param  string                                   $subject
      * @return \SimpleNewsletterBundle\Model\Newsletter
      */
     public function setSubject($subject)
@@ -77,7 +77,7 @@ class Newsletter implements NewsletterInterface
     /**
      * Set content to $content
      *
-     * @param string $content
+     * @param  string                                   $content
      * @return \SimpleNewsletterBundle\Model\Newsletter
      */
     public function setContent($content)
@@ -90,7 +90,7 @@ class Newsletter implements NewsletterInterface
     /**
      * Define placeholders to $placeholders
      *
-     * @param boolean $placeholders
+     * @param  boolean                                             $placeholders
      * @return \Sescandell\SimpleNewsletterBundle\Model\Newsletter
      */
     public function setPlaceholders($placeholders = true)
@@ -122,7 +122,7 @@ class Newsletter implements NewsletterInterface
     /**
      * Set sent date
      *
-     * @param \DateTime $sentAt
+     * @param  \DateTime                                $sentAt
      * @return \SimpleNewsletterBundle\Model\Newsletter
      */
     public function setSentAt(\DateTime $sentAt)
@@ -145,7 +145,7 @@ class Newsletter implements NewsletterInterface
     /**
      * Set create date at $createdAt
      *
-     * @param \DateTime $createdAt
+     * @param  \DateTime                                $createdAt
      * @return \SimpleNewsletterBundle\Model\Newsletter
      */
     public function setCreatedAt(\DateTime $createdAt)
@@ -168,7 +168,7 @@ class Newsletter implements NewsletterInterface
     /**
      * Set update date at $updatedAt
      *
-     * @param \DateTime $updatedAt
+     * @param  \DateTime                                $updatedAt
      * @return \SimpleNewsletterBundle\Model\Newsletter
      */
     public function setUpdatedAt(\DateTime $updatedAt)

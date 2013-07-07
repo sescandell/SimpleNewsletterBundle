@@ -67,7 +67,7 @@ class SenderHandler
      * sentAt is not changed
      *
      * @param NewsletterInterface $newsletter
-     * @param RecipientInterface $recipient
+     * @param RecipientInterface  $recipient
      */
     public function sendTo(NewsletterInterface $newsletter, RecipientInterface $recipient)
     {

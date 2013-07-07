@@ -1,5 +1,5 @@
 <?php
-namespace Sescandell\SimpleNewsletterBundle\Service;
+namespace Sescandell\SimpleNewsletterBundle\Sender;
 
 use Sescandell\SimpleNewsletterBundle\Sender\SenderInterface;
 use Sescandell\SimpleNewsletterBundle\Model\NewsletterInterface;
@@ -61,7 +61,7 @@ class TwigSwiftMailerSender implements SenderInterface
     {
         $template = $this->twig->loadTemplate('SescandellSimpleNewsletterBundle::newsletter.html.twig');
         if ($newsletter->hasPlaceholders()) {
-            foreach ((array)$recipients as $recipient) {
+            foreach ((array) $recipients as $recipient) {
                 $viewParameters = array(
                     'recipient'  => $recipient,
                     'newsletter' => $newsletter
@@ -86,9 +86,9 @@ class TwigSwiftMailerSender implements SenderInterface
 
     /**
      * @param array|RecipientInterface $recipients
-     * @param string $subject
-     * @param string $text
-     * @param string $html
+     * @param string                   $subject
+     * @param string                   $text
+     * @param string                   $html
      */
     protected function sendMessage($recipients, $subject, $text, $html = '')
     {

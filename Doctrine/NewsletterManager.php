@@ -1,7 +1,6 @@
 <?php
 namespace Sescandell\SimpleNewsletterBundle\Doctrine;
 
-
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\ObjectRepository;
 use Sescandell\SimpleNewsletterBundle\Model\NewsletterInterface;
@@ -87,6 +86,5 @@ class NewsletterManager extends BaseNewsletterManager
     {
         return $this->objectRepository->findAll();
     }
-
 
 }
