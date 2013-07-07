@@ -20,9 +20,27 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('sescandell_simple_newsletter');
 
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
+        $rootNode
+            ->children()
+                // Global section
+                ->scalarNode('newsletter_class')->isRequired()->cannotBeEmpty()->end()
+                // Service Section
+                ->arrayNode('service')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('newsletter_manager')->defaultValue('sescandell_simple_newsletter.newsletter_manager.default')->end()
+                    ->end()
+                    ->scalarNode('recipient_manager')->isRequired()->cannotBeEmpty()->end()
+                    ->scalarNode('sender')->isRequired()->cannotBeEmpty()->end()
+                ->end()
+                ->arrayNode('twig_swift_sender')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('email')->defaultValue('no-reply@example.com')->end()
+                        ->scalarNode('fullname')->defaultValue('example')->end()
+                    ->end()
+                ->end()
+            ->end();
 
         return $treeBuilder;
     }

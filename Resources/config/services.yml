@@ -1,7 +1,25 @@
-parameters:
-#    sescandell_simple_newsletter.example.class: Sescandell\SimpleNewsletterBundle\Example
-
 services:
-#    sescandell_simple_newsletter.example:
-#        class: %sescandell_simple_newsletter.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    sescandell_simple_newsletter.sender_handler:
+        class: Sescandell\SimpleNewsletterBundle\Sender\SenderHandler
+        calls:
+            - [ setNewsletterManager, [ @sescandell_simple_newsletter.newsletter_manager ]]
+            - [ setRecipientManager, [ @sescandell_simple_newsletter.recipient_manager ]]
+            - [ setSender, [ @sescandell_simple_newsletter.sender ]]
+
+    sescandell_simple_newsletter.sender.twig_swift:
+        class: Sescandell\SimpleNewsletterBundle\Sender\TwigSwiftMailerSender
+        calls:
+            - [ setMailer, [ @mailer ]]
+            - [ setTwigEnvironment, [ @twig ]]
+        public: false
+
+    sescandell_simple_newsletter.newsletter_manager.default:
+        class: Sescandell\SimpleNewsletterBundle\Doctrine\NewsletterManager
+        arguments:
+            - @doctrine.orm.entity_manager
+            - %sescandell_simple_newsletter.model.newsletter.class%
+        public: false
+
+    sescandell_simple_newsletter.newsletter_listener:
+        class: Sescandell\SimpleNewsletterBundle\Doctrine\NewsletterListener
+        public: false
