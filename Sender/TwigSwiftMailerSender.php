@@ -105,20 +105,25 @@ class TwigSwiftMailerSender implements SenderInterface
         }
 
         if (is_array($recipients)) {
+            /*
             $addresses = array_map(
                 function($recipient) {
                     return array($recipient->getDestination() => $recipient->getFullname());
                 },
                 $recipients
             );
-            $message->setBcc($adresses);
+            $message->setTo($adresses);
+            */
+            foreach ($recipients as $recipient) {
+                $message->setTo($recipients->getDestination(), $recipients->getFullname());
+                $this->mailer->send($message);
+            }
         } elseif ($recipients instanceof RecipientInterface) {
             $message->setTo($recipients->getDestination(), $recipients->getFullname());
+            $this->mailer->send($message);
         } else {
             throw new \InvalidArgumentException('recipients must be an array or RecipientInterface object');
         }
-
-        $this->mailer->send($message);
     }
 
 }
