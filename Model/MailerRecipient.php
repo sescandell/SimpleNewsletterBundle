@@ -21,7 +21,7 @@ class MailerRecipient implements RecipientInterface
      *
      * @return RecipientInterface
      */
-    public static function create($fullname, $email)
+    public static function createMailerRecipient($fullname, $email)
     {
         $recipient = new static();
 
