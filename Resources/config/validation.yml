@@ -1,0 +1,7 @@
+Sescandell\SimpleNewsletterBundle\Model\Newsletter:
+    subject:
+        NotBlank:
+            message: sescandell_simplenewsletter.suject.blanck
+    content:
+        NotBlank:
+            message: sescandell_simplenewsletter.content.blanck
