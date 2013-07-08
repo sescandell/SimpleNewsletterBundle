@@ -37,7 +37,9 @@ class MailerRecipient implements RecipientInterface
      * Private constructor,
      * Use create static function
      */
-    private function __construct(){}
+    private function __construct()
+    {
+    }
 
     /**
      * (non-PHPdoc)
