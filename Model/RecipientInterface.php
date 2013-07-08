@@ -9,6 +9,14 @@ interface RecipientInterface
      * return string
      */
     public function getDestination();
+    
+    /**
+     * Set recipient's destination
+     * 
+     * @param string $destination
+     * @return RecipientInterface
+     */
+    public function setDestination($destination);
 
     /**
      * Get the recipient's fullname
@@ -16,4 +24,12 @@ interface RecipientInterface
      * @return string
      */
     public function getFullname();
+    
+    /**
+     * Set recipient's fullname
+     * 
+     * @param string $fullname
+     * @return RecipientInterface
+     */
+    public function setFullname($fullname);
 }

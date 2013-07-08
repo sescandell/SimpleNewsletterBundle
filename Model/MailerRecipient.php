@@ -34,20 +34,23 @@ class MailerRecipient implements RecipientInterface
     }
 
     /**
-     * Private constructor,
-     * Use create static function
-     */
-    private function __construct()
-    {
-    }
-
-    /**
      * (non-PHPdoc)
      * @see \Sescandell\SimpleNewsletterBundle\Model\RecipientInterface::getFullname()
      */
     public function getFullname()
     {
         return $this->fullname;
+    }
+    
+    /**
+     * (non-PHPdoc)
+     * @see \Sescandell\SimpleNewsletterBundle\Model\RecipientInterface::setFullname()
+     */
+    public function setFullname($fullname)
+    {
+       $this->fullname = $fullname;
+
+       return $this;
     }
 
     /**
@@ -57,6 +60,17 @@ class MailerRecipient implements RecipientInterface
     public function getDestination()
     {
         return $this->email;
+    }
+    
+    /**
+     * (non-PHPdoc)
+     * @see \Sescandell\SimpleNewsletterBundle\Model\RecipientInterface::setDestination()
+     */
+    public function setDestination($destination)
+    {
+        $this->email = $destination;
+        
+        return $this;
     }
 
 }
