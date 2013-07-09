@@ -70,7 +70,7 @@ class TwigSwiftMailerSender implements SenderInterface
                 $textBody = $template->renderBlock('textBody', $viewParameters);
                 $htmlBody = $template->renderBlock('htmlBody', $viewParameters);
 
-                $this->sendMessage($recipient, $subject, $text, $htmlBody);
+                $this->sendMessage($recipient, $subject, $textBody, $htmlBody);
             }
         } else {
             $viewParameters = array(
@@ -80,7 +80,7 @@ class TwigSwiftMailerSender implements SenderInterface
             $textBody = $template->renderBlock('textBody', $viewParameters);
             $htmlBody = $template->renderBlock('htmlBody', $viewParameters);
 
-            $this->sendMessage($recipients, $subject, $text, $htmlBody);
+            $this->sendMessage($recipients, $subject, $textBody, $htmlBody);
         }
     }
 
