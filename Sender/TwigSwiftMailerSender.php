@@ -97,7 +97,7 @@ class TwigSwiftMailerSender implements SenderInterface
             // message for each recipient
             // if SPOOL via files : same message could be used once
             foreach ($recipients as $recipient) {
-                $this->mailer->send($this->createMessage($subject, $text, $html)->setTo($recipients->getDestination(), $recipients->getFullname()));
+                $this->mailer->send($this->createMessage($subject, $text, $html)->setTo($recipient->getDestination(), $recipient->getFullname()));
             }
         } elseif ($recipients instanceof RecipientInterface) {
             $this->mailer->send($this->createMessage($subject, $text, $html)->setTo($recipients->getDestination(), $recipients->getFullname()));
