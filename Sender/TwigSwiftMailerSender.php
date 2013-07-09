@@ -92,38 +92,41 @@ class TwigSwiftMailerSender implements SenderInterface
      */
     protected function sendMessage($recipients, $subject, $text, $html = '')
     {
+        if (is_array($recipients)) {
+            // TODO: manage if spool memory, we have no choice and must recreate the
+            // message for each recipient
+            // if SPOOL via files : same message could be used once
+            foreach ($recipients as $recipient) {
+                $this->mailer->send($this->createMessage($subject, $text, $html)->setTo($recipients->getDestination(), $recipients->getFullname()));
+            }
+        } elseif ($recipients instanceof RecipientInterface) {
+            $this->mailer->send($this->createMessage($subject, $text, $html)->setTo($recipients->getDestination(), $recipients->getFullname()));
+        } else {
+            throw new \InvalidArgumentException('recipients must be an array or RecipientInterface object');
+        }
+    }
+    
+    /**
+     * 
+     * @param string $subject
+     * @param string $text
+     * @param string $html
+     */
+    protected function createMessage($subject, $text, $html)
+    {
         $message = $this->mailer->createMessage();
         $message
             ->setSubject($subject)
             ->setFrom($this->senderMail, $this->senderFullname);
-
+        
         if (!empty($html)) {
             $message->setBody($html, 'text/html')
             ->addPart($text, 'text/plain');
         } else {
             $message->setBody($text);
         }
-
-        if (is_array($recipients)) {
-            /*
-            $addresses = array_map(
-                function($recipient) {
-                    return array($recipient->getDestination() => $recipient->getFullname());
-                },
-                $recipients
-            );
-            $message->setTo($adresses);
-            */
-            foreach ($recipients as $recipient) {
-                $message->setTo($recipients->getDestination(), $recipients->getFullname());
-                $this->mailer->send($message);
-            }
-        } elseif ($recipients instanceof RecipientInterface) {
-            $message->setTo($recipients->getDestination(), $recipients->getFullname());
-            $this->mailer->send($message);
-        } else {
-            throw new \InvalidArgumentException('recipients must be an array or RecipientInterface object');
-        }
+        
+        return $message;
     }
 
 }
