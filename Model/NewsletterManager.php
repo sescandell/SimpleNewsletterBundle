@@ -29,4 +29,11 @@ abstract class NewsletterManager implements NewsletterManagerInterface
         $newsletter->setSentAt(new \DateTime());
         $this->updateNewsletter($newsletter);
     }
+    
+    /**
+     * Returns the newsletter's fully qualified class name.
+     *
+     * @return string
+     */
+    abstract protected function getClass();
 }

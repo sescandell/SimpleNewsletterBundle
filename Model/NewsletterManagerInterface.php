@@ -50,11 +50,4 @@ interface NewsletterManagerInterface
      * @return \Traversable
      */
     public function findNewsletters();
-
-    /**
-     * Returns the newsletter's fully qualified class name.
-     *
-     * @return string
-     */
-    protected function getClass();
 }

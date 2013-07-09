@@ -40,7 +40,7 @@ class NewsletterManager extends BaseNewsletterManager
 
     /**
      * (non-PHPdoc)
-     * @see \Sescandell\SimpleNewsletterBundle\Model\NewsletterManagerInterface::getClass()
+     * @see \Sescandell\SimpleNewsletterBundle\Model\NewsletterManager::getClass()
      */
     protected function getClass()
     {
