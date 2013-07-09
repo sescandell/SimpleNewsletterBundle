@@ -41,6 +41,18 @@ class MailerRecipient implements RecipientInterface
     {
         return $this->fullname;
     }
+    
+    /**
+     * 
+     * @param string $fullname
+     * @return \Sescandell\SimpleNewsletterBundle\Model\MailerRecipient
+     */
+    public function setFullname($fullname)
+    {
+       $this->fullname = $fullname;
+
+       return $this;
+    }
 
     /**
      * (non-PHPdoc)
@@ -50,4 +62,17 @@ class MailerRecipient implements RecipientInterface
     {
         return $this->email;
     }
+    
+    /**
+     * 
+     * @param string $destination
+     * @return \Sescandell\SimpleNewsletterBundle\Model\MailerRecipient
+     */
+    public function setDestination($destination)
+    {
+        $this->email = $destination;
+        
+        return $this;
+    }
+
 }
