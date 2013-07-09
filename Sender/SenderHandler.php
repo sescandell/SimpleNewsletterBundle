@@ -55,7 +55,7 @@ class SenderHandler
      */
     public function send(NewsletterInterface $newsletter)
     {
-        $recipients = $this->recipientManager->getRecipients();
+        $recipients = $this->recipientManager->getRecipients($newsletter);
         $this->sender->send($newsletter, $recipients);
 
         // TODO: Use an event?
