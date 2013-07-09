@@ -21,7 +21,7 @@ class MailerRecipient implements RecipientInterface
      *
      * @return RecipientInterface
      */
-    public static function createMailerRecipient($fullname, $email)
+    public static function create($fullname, $email)
     {
         $recipient = new static();
 
@@ -41,17 +41,6 @@ class MailerRecipient implements RecipientInterface
     {
         return $this->fullname;
     }
-    
-    /**
-     * (non-PHPdoc)
-     * @see \Sescandell\SimpleNewsletterBundle\Model\RecipientInterface::setFullname()
-     */
-    public function setFullname($fullname)
-    {
-       $this->fullname = $fullname;
-
-       return $this;
-    }
 
     /**
      * (non-PHPdoc)
@@ -61,16 +50,4 @@ class MailerRecipient implements RecipientInterface
     {
         return $this->email;
     }
-    
-    /**
-     * (non-PHPdoc)
-     * @see \Sescandell\SimpleNewsletterBundle\Model\RecipientInterface::setDestination()
-     */
-    public function setDestination($destination)
-    {
-        $this->email = $destination;
-        
-        return $this;
-    }
-
 }
