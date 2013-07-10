@@ -31,7 +31,7 @@ class TwigSwiftMailerSender implements SenderInterface
      * @param string $senderMail
      * @param string $senderFullname
      */
-    public function __contruct($senderMail, $senderFullname)
+    public function __construct($senderMail, $senderFullname)
     {
         $this->senderMail = $senderMail;
         $this->senderFullname = $senderFullname;
@@ -118,10 +118,10 @@ class TwigSwiftMailerSender implements SenderInterface
         $message
             ->setSubject($subject)
             ->setFrom($this->senderMail, $this->senderFullname);
-        
+
         if (!empty($html)) {
             $message->setBody($html, 'text/html')
-            ->addPart($text, 'text/plain');
+                ->addPart($text, 'text/plain');
         } else {
             $message->setBody($text);
         }
