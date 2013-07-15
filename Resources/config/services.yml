@@ -5,6 +5,7 @@ services:
             - [ setNewsletterManager, [ @sescandell_simple_newsletter.newsletter_manager ]]
             - [ setRecipientManager, [ @sescandell_simple_newsletter.recipient_manager ]]
             - [ setSender, [ @sescandell_simple_newsletter.sender ]]
+            - [ setSenderTo, [ @sescandell_simple_newsletter.sender_to ]]
 
     sescandell_simple_newsletter.sender.twig_swift:
         class: Sescandell\SimpleNewsletterBundle\Sender\TwigSwiftMailerSender
