@@ -30,16 +30,15 @@ class SescandellSimpleNewsletterExtension extends Extension
         // TODO: remove aliases, use addCall functions... no need to create "fictive" services
         $container->setAlias('sescandell_simple_newsletter.recipient_manager', $config['service']['recipient_manager']);
         $container->setAlias('sescandell_simple_newsletter.sender', $config['service']['sender']);
+        $container->setAlias('sescandell_simple_newsletter.sender_to', $config['service']['sender_to']);
 
         /**
          * TODO: manage Propel and ODM
          */
         $container->getDefinition('sescandell_simple_newsletter.newsletter_listener')->addTag('doctrine.event_subscriber');
 
-        if ('sescandell_simple_newsletter.sender.twig_swift' == $config['service']['sender']) {
-            $container->getDefinition('sescandell_simple_newsletter.sender.twig_swift')
-                ->addArgument($config['twig_swift_sender']['email'])
-                ->addArgument($config['twig_swift_sender']['fullname']);
-        }
+        $container->getDefinition('sescandell_simple_newsletter.sender.twig_swift')
+            ->addArgument($config['twig_swift_sender']['email'])
+            ->addArgument($config['twig_swift_sender']['fullname']);
     }
 }

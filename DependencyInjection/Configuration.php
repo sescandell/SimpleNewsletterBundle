@@ -31,6 +31,7 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('newsletter_manager')->defaultValue('sescandell_simple_newsletter.newsletter_manager.default')->end()
                         ->scalarNode('recipient_manager')->isRequired()->cannotBeEmpty()->end()
                         ->scalarNode('sender')->isRequired()->cannotBeEmpty()->end()
+                        ->scalarNode('sender_to')->defaultValue('sescandell_simple_newsletter.sender.twig_swift')->end()
                     ->end()
                 ->end()
                 ->arrayNode('twig_swift_sender')
