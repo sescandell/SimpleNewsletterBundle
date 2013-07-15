@@ -22,6 +22,11 @@ class SenderHandler
      * @var SenderInterface
      */
     protected $sender;
+    
+    /**
+     * @var SenderInterface
+     */
+    protected $senderTo = null;
 
     /**
      * @param NewsletterManagerInterface $newsletterManager
@@ -45,6 +50,14 @@ class SenderHandler
     public function setSender(SenderInterface $sender)
     {
         $this->sender = $sender;
+    }
+    
+    /**
+     * @param SenderInterface $sender
+     */
+    public function setSenderTo(SenderInterface $sender = null)
+    {
+        $this->senderTo = $sender;
     }
 
     /**
@@ -71,6 +84,10 @@ class SenderHandler
      */
     public function sendTo(NewsletterInterface $newsletter, RecipientInterface $recipient)
     {
-        $this->sender->send($newsletter, $recipient);
+        if (is_null($this->senderTo)) {
+            $this->sender->send($newsletter, $recipient);
+        } else {
+            $this->senderTo->send($newsletter, $recipient);
+        }
     }
 }
